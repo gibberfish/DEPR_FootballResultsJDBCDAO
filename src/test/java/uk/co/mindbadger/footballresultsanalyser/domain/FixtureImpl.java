@@ -2,15 +2,15 @@ package uk.co.mindbadger.footballresultsanalyser.domain;
 
 import java.util.Calendar;
 
-public class FixtureImpl implements Fixture {
+public class FixtureImpl implements Fixture<Integer> {
 	private static final long serialVersionUID = -4023266982899204217L;
 	
 	private Integer fixtureId;
 	private Calendar fixtureDate;
-	private Season season;
-	private Division division;
-	private Team homeTeam;
-	private Team awayTeam;
+	private Season<Integer> season;
+	private Division<Integer> division;
+	private Team<Integer> homeTeam;
+	private Team<Integer> awayTeam;
 	private Integer homeGoals;
 	private Integer awayGoals;
 	
@@ -20,12 +20,12 @@ public class FixtureImpl implements Fixture {
 	}
 
 	@Override
-	public Team getAwayTeam() {
+	public Team<Integer> getAwayTeam() {
 		return this.awayTeam;
 	}
 
 	@Override
-	public Division getDivision() {
+	public Division<Integer> getDivision() {
 		return this.division;
 	}
 
@@ -45,12 +45,12 @@ public class FixtureImpl implements Fixture {
 	}
 
 	@Override
-	public Team getHomeTeam() {
+	public Team<Integer> getHomeTeam() {
 		return this.homeTeam;
 	}
 
 	@Override
-	public Season getSeason() {
+	public Season<Integer> getSeason() {
 		return this.season;
 	}
 
@@ -60,12 +60,12 @@ public class FixtureImpl implements Fixture {
 	}
 
 	@Override
-	public void setAwayTeam(Team arg0) {
+	public void setAwayTeam(Team<Integer> arg0) {
 		this.awayTeam = arg0;
 	}
 
 	@Override
-	public void setDivision(Division arg0) {
+	public void setDivision(Division<Integer> arg0) {
 		this.division = arg0;
 	}
 
@@ -85,12 +85,12 @@ public class FixtureImpl implements Fixture {
 	}
 
 	@Override
-	public void setHomeTeam(Team arg0) {
+	public void setHomeTeam(Team<Integer> arg0) {
 		this.homeTeam = arg0;
 	}
 
 	@Override
-	public void setSeason(Season arg0) {
+	public void setSeason(Season<Integer> arg0) {
 		this.season = arg0;
 	}
 }

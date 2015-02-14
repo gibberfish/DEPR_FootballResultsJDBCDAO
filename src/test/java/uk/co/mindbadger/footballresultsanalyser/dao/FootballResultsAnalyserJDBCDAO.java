@@ -25,11 +25,11 @@ import uk.co.mindbadger.footballresultsanalyser.domain.SeasonDivisionTeam;
 import uk.co.mindbadger.footballresultsanalyser.domain.SeasonImpl;
 import uk.co.mindbadger.footballresultsanalyser.domain.Team;
 
-public class FootballResultsAnalyserJDBCDAO implements FootballResultsAnalyserDAO {
+public class FootballResultsAnalyserJDBCDAO implements FootballResultsAnalyserDAO<Integer> {
 
 	Logger logger = Logger.getLogger(FootballResultsAnalyserJDBCDAO.class);
 	
-	private DomainObjectFactory domainObjectFactory;
+	private DomainObjectFactory<Integer> domainObjectFactory;
 	private DataSource dataSource;
 	private Map<Thread, Connection> connections = new HashMap<Thread, Connection>();
 	
@@ -66,8 +66,8 @@ public class FootballResultsAnalyserJDBCDAO implements FootballResultsAnalyserDA
 	}
 
 	@Override
-	public Division addDivision(String divisionName) {
-		Division division = domainObjectFactory.createDivision(divisionName);
+	public Division<Integer> addDivision(String divisionName) {
+		Division<Integer> division = domainObjectFactory.createDivision(divisionName);
 		
 		Connection connection = connections.get(Thread.currentThread());
 		
@@ -87,62 +87,62 @@ public class FootballResultsAnalyserJDBCDAO implements FootballResultsAnalyserDA
 	}
 
 	@Override
-	public Fixture addFixture(Season season, Calendar fixtureDate, Division division, Team homeTeam, Team awayTeam, Integer homeGoals, Integer awayGoals) {
+	public Fixture<Integer> addFixture(Season<Integer> season, Calendar fixtureDate, Division<Integer> division, Team<Integer> homeTeam, Team<Integer> awayTeam, Integer homeGoals, Integer awayGoals) {
 		
 		return null;
 	}
 
 	@Override
-	public Season addSeason(Integer arg0) {
+	public Season<Integer> addSeason(Integer arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Team addTeam(String arg0) {
+	public Team<Integer> addTeam(String arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Map<Integer, Division> getAllDivisions() {
+	public Map<Integer, Division<Integer>> getAllDivisions() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Map<Integer, Team> getAllTeams() {
+	public Map<Integer, Team<Integer>> getAllTeams() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Set<SeasonDivision> getDivisionsForSeason(int arg0) {
+	public Set<SeasonDivision<Integer>> getDivisionsForSeason(int arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Fixture> getFixturesForTeamInDivisionInSeason(int arg0,
+	public List<Fixture<Integer>> getFixturesForTeamInDivisionInSeason(int arg0,
 			int arg1, int arg2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Fixture> getFixturesWithNoFixtureDate() {
+	public List<Fixture<Integer>> getFixturesWithNoFixtureDate() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Season getSeason(Integer arg0) {
+	public Season<Integer> getSeason(Integer arg0) {
 		return null;
 	}
 
 	@Override
-	public List<Season> getSeasons() {
-		List<Season> seasons = new ArrayList<Season> ();
+	public List<Season<Integer>> getSeasons() {
+		List<Season<Integer>> seasons = new ArrayList<Season<Integer>> ();
 		
 		Connection connection = connections.get(Thread.currentThread());
 		
@@ -152,7 +152,7 @@ public class FootballResultsAnalyserJDBCDAO implements FootballResultsAnalyserDA
 	        ResultSet results = ps.executeQuery();
 	        
 	        while (results.next()) {
-	        	Season season = new SeasonImpl ();
+	        	Season<Integer> season = new SeasonImpl ();
 	        }
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -162,23 +162,23 @@ public class FootballResultsAnalyserJDBCDAO implements FootballResultsAnalyserDA
 	}
 
 	@Override
-	public Set<SeasonDivisionTeam> getTeamsForDivisionInSeason(int arg0,
+	public Set<SeasonDivisionTeam<Integer>> getTeamsForDivisionInSeason(int arg0,
 			int arg1) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Fixture> getUnplayedFixturesBeforeToday() {
+	public List<Fixture<Integer>> getUnplayedFixturesBeforeToday() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public DomainObjectFactory getDomainObjectFactory() {
+	public DomainObjectFactory<Integer> getDomainObjectFactory() {
 		return domainObjectFactory;
 	}
 
-	public void setDomainObjectFactory(DomainObjectFactory domainObjectFactory) {
+	public void setDomainObjectFactory(DomainObjectFactory<Integer> domainObjectFactory) {
 		this.domainObjectFactory = domainObjectFactory;
 	}
 

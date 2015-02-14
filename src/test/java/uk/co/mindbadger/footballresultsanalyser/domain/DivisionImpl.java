@@ -2,12 +2,12 @@ package uk.co.mindbadger.footballresultsanalyser.domain;
 
 import java.util.Set;
 
-public class DivisionImpl implements Division {
+public class DivisionImpl implements Division<Integer> {
 	private static final long serialVersionUID = 4238358515209754464L;
 
 	private Integer divisionId;
 	private String divisionName;
-	private Set<SeasonDivision> seasonsForDivision;
+	private Set<SeasonDivision<Integer>> seasonsForDivision;
 	
 	@Override
 	public Integer getDivisionId() {
@@ -20,7 +20,7 @@ public class DivisionImpl implements Division {
 	}
 
 	@Override
-	public Set<SeasonDivision> getSeasonsForDivision() {
+	public Set<SeasonDivision<Integer>> getSeasonsForDivision() {
 		return this.seasonsForDivision;
 	}
 
@@ -35,7 +35,12 @@ public class DivisionImpl implements Division {
 	}
 
 	@Override
-	public void setSeasonsForDivision(Set<SeasonDivision> seasonsForDivision) {
+	public void setSeasonsForDivision(Set<SeasonDivision<Integer>> seasonsForDivision) {
 		this.seasonsForDivision = seasonsForDivision;
+	}
+
+	@Override
+	public String getDivisionIdAsString() {
+		return divisionId.toString();
 	}
 }

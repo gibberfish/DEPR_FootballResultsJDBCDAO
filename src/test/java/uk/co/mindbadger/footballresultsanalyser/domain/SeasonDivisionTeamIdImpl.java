@@ -1,31 +1,31 @@
 package uk.co.mindbadger.footballresultsanalyser.domain;
 
-public class SeasonDivisionTeamIdImpl implements SeasonDivisionTeamId {
+public class SeasonDivisionTeamIdImpl implements SeasonDivisionTeamId<Integer> {
 	private static final long serialVersionUID = -7353557958085478618L;
 	
-	private SeasonDivisionTeam seasonDivisionTeam;
+	private SeasonDivisionTeam<Integer> seasonDivisionTeam;
 	
-	public SeasonDivisionTeamIdImpl (SeasonDivisionTeam seasonDivisionTeam) {
+	public SeasonDivisionTeamIdImpl (SeasonDivisionTeam<Integer> seasonDivisionTeam) {
 		this.seasonDivisionTeam = seasonDivisionTeam;
 	}
 	
 	@Override
-	public SeasonDivision getSeasonDivision() {
+	public SeasonDivision<Integer> getSeasonDivision() {
 		return this.seasonDivisionTeam.getSeasonDivision();
 	}
 
 	@Override
-	public Team getTeam() {
+	public Team<Integer> getTeam() {
 		return this.seasonDivisionTeam.getTeam();
 	}
 
 	@Override
-	public void setSeasonDivision(SeasonDivision seasonDivision) {
+	public void setSeasonDivision(SeasonDivision<Integer> seasonDivision) {
 		throw new IllegalArgumentException("You cannot change the SeasonDivision");
 	}
 
 	@Override
-	public void setTeam(Team team) {
+	public void setTeam(Team<Integer> team) {
 		throw new IllegalArgumentException("You cannot change the Team");
 	}
 
